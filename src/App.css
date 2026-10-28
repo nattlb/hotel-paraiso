@@ -1,38 +1,358 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap");
+
+:root {
+  --crema: #faf7f2;
+  --arena: #f1ebe0;
+  --dorado: #b8976a;
+  --dorado-oscuro: #9a7d54;
+  --texto: #4a453f;
+  --texto-suave: #7a746b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: var(--texto);
+  background: var(--crema);
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+.logo,
+.footer-logo {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+}
+
+/* NAVEGACIÓN */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 50px;
+  background: rgba(250, 247, 242, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(184, 151, 106, 0.25);
+}
+
+.logo {
+  font-size: 1.6rem;
+  color: var(--dorado-oscuro);
+  letter-spacing: 1px;
+}
+
+.links a {
+  color: var(--texto);
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.3s;
+}
+
+.links a:hover {
+  color: var(--dorado);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background-color: var(--arena);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(250, 247, 242, 0.55);
+}
+
+.hero-contenido {
+  position: relative;
+  padding: 20px;
+}
+
+.hero-sub {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.8rem;
+  color: var(--dorado-oscuro);
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  color: var(--texto);
+  line-height: 1.1;
+}
+
+.hero-texto {
+  margin: 20px 0 35px;
+  color: var(--texto-suave);
+  font-size: 1.05rem;
+}
+
+/* BOTONES */
+.btn {
+  display: inline-block;
+  padding: 14px 34px;
+  background: var(--dorado);
+  color: white;
+  border: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: var(--dorado-oscuro);
+}
+
+/* SECCIONES */
+.seccion {
+  padding: 100px 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.seccion-arena {
+  background: var(--arena);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.etiqueta {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.75rem;
+  color: var(--dorado);
+  margin-bottom: 8px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.seccion h2 {
+  font-size: 2.8rem;
+  color: var(--texto);
+}
+
+.linea {
+  width: 60px;
+  height: 1px;
+  background: var(--dorado);
+  margin: 22px auto 35px;
+}
+
+.texto {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--texto-suave);
+  font-size: 1.05rem;
+}
+
+/* HABITACIONES */
+.grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: white;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(120, 100, 70, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(120, 100, 70, 0.15);
+}
+
+.card-img {
+  height: 210px;
+  overflow: hidden;
+  background: var(--arena);
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.card:hover .card-img img {
+  transform: scale(1.06);
+}
+
+.card-info {
+  padding: 24px;
+}
+
+.card-info h3 {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.desc {
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  margin-bottom: 15px;
+}
+
+.precio {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.6rem;
+  color: var(--dorado-oscuro);
+  border-top: 1px solid var(--arena);
+  padding-top: 12px;
+}
+
+.precio span {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+}
+
+/* CONTACTO */
+.contacto-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 60px;
+  align-items: start;
+  text-align: left;
+}
+
+.contacto-info .dato {
+  margin-bottom: 28px;
+}
+
+.contacto-info h3 {
+  font-size: 1.3rem;
+  color: var(--dorado-oscuro);
+  margin-bottom: 4px;
+}
+
+.contacto-info p {
+  color: var(--texto-suave);
+}
+
+.redes {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.redes a {
+  padding: 8px 18px;
+  border: 1px solid var(--dorado);
+  color: var(--dorado-oscuro);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+.redes a:hover {
+  background: var(--dorado);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* FORMULARIO */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 550px;
+  margin: 0 auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+input,
+textarea {
+  padding: 14px 16px;
+  border: 1px solid #ddd4c4;
+  background: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--texto);
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--dorado);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--arena);
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(184, 151, 106, 0.3);
+}
+
+.footer-logo {
+  font-size: 1.6rem;
+  color: var(--dorado-oscuro);
+  margin-bottom: 5px;
+}
+
+/* CELULAR */
+@media (max-width: 800px) {
+  .contacto-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
   }
-  to {
-    transform: rotate(360deg);
+  .redes {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav {
+    padding: 14px 20px;
+  }
+  .links a {
+    margin-left: 14px;
+    font-size: 0.7rem;
+  }
+  .logo {
+    font-size: 1.2rem;
   }
 }
