@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/hotel-paraiso/static/css/main.a9c6c6a3.css",
+    "main.js": "/hotel-paraiso/static/js/main.157e0033.js",
+    "index.html": "/hotel-paraiso/index.html",
+    "main.a9c6c6a3.css.map": "/hotel-paraiso/static/css/main.a9c6c6a3.css.map",
+    "main.157e0033.js.map": "/hotel-paraiso/static/js/main.157e0033.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a9c6c6a3.css",
+    "static/js/main.157e0033.js"
+  ]
+}
