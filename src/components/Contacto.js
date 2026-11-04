@@ -1,54 +1,85 @@
+import { useState } from "react";
+import contacto from "../data/contacto";
+import { IconoInstagram, IconoFacebook, IconoWhatsapp } from "../data/iconos";
+
 function Contacto() {
+  const [enviado, setEnviado] = useState(false);
+  const [nombreEnviado, setNombreEnviado] = useState("");
+
+  const enviar = (e) => {
+    e.preventDefault();
+    setNombreEnviado(new FormData(e.target).get("nombre"));
+    setEnviado(true);
+    e.target.reset();
+  };
+
   return (
-    <section id="contacto" className="seccion">
-      <p className="etiqueta">Escribinos</p>
-      <h2>Contacto</h2>
+    <section id="contacto" className="seccion claro">
+      <p className="eyebrow">Contacto</p>
+      <h2>Contacto y consultas</h2>
       <div className="linea"></div>
 
       <div className="contacto-grid">
         <div className="contacto-info">
-          <div className="dato">
-            <h3>Teléfono</h3>
-            <p>+54 11 5555-0123</p>
-          </div>
+          <h4>Dirección</h4>
+          <p>{contacto.direccion}</p>
 
-          <div className="dato">
-            <h3>Email</h3>
-            <p>reservas@hotelparaiso.com</p>
-          </div>
+          <h4>Teléfono</h4>
+          <p>{contacto.telefono}</p>
 
-          <div className="dato">
-            <h3>Dirección</h3>
-            <p>Av. Siempre Viva 742</p>
-          </div>
+          <h4>WhatsApp</h4>
+          <p>
+            <a href={contacto.whatsappLink} target="_blank" rel="noreferrer">
+              {contacto.whatsapp}
+            </a>
+          </p>
 
-          <div className="dato">
-            <h3>Seguinos</h3>
-            <div className="redes">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer">
-                Instagram
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noreferrer">
-                Facebook
-              </a>
-              <a
-                href="https://wa.me/541155550123"
-                target="_blank"
-                rel="noreferrer"
-              >
-                WhatsApp
-              </a>
-            </div>
+          <h4>Correo</h4>
+          <p>
+            <a href={"mailto:" + contacto.email}>{contacto.email}</a>
+          </p>
+
+          <h4>Recepción</h4>
+          <p>Atención las 24 horas</p>
+
+          <h4>Seguinos</h4>
+          <div className="redes">
+            <a href={contacto.instagram} target="_blank" rel="noreferrer">
+              <IconoInstagram /> Instagram
+            </a>
+            <a href={contacto.facebook} target="_blank" rel="noreferrer">
+              <IconoFacebook /> Facebook
+            </a>
+            <a href={contacto.whatsappLink} target="_blank" rel="noreferrer">
+              <IconoWhatsapp /> WhatsApp
+            </a>
           </div>
         </div>
 
-        <form onSubmit={(e) => e.preventDefault()}>
-          <input type="text" placeholder="Nombre" />
-          <input type="email" placeholder="Email" />
-          <textarea placeholder="Mensaje" rows="5"></textarea>
+        <form className="contacto-form" onSubmit={enviar}>
+          <input name="nombre" type="text" placeholder="Nombre y apellido" required />
+          <input name="email" type="email" placeholder="Correo electrónico" required />
+          <input name="telefono" type="tel" placeholder="Teléfono (opcional)" />
+
+          <select name="asunto" defaultValue="reservas">
+            <option value="reservas">Reservas y disponibilidad</option>
+            <option value="servicios">Servicios del hotel</option>
+            <option value="facturacion">Facturación</option>
+            <option value="otro">Otro</option>
+          </select>
+
+          <textarea name="mensaje" rows="5" placeholder="Escribí tu consulta" required />
+
           <button type="submit" className="btn">
-            Enviar mensaje
+            Enviar consulta
           </button>
+
+          {enviado && (
+            <p className="exito">
+              ¡Gracias, {nombreEnviado}! Recibimos tu consulta y te responderemos
+              a la brevedad.
+            </p>
+          )}
         </form>
       </div>
     </section>

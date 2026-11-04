@@ -1,30 +1,41 @@
-function Header() {
-  return (
-    <header>
-      <nav className="nav">
-        <span className="logo">Hotel Paraíso</span>
-        <div className="links">
-          <a href="#about">Nosotros</a>
-          <a href="#habitaciones">Habitaciones</a>
-          <a href="#contacto">Contacto</a>
-        </div>
-      </nav>
+import { useState } from "react";
 
-      <div
-        className="hero"
-        style={{ backgroundImage: "url(/imagenes/premium.jpg)" }}
+const links = [
+  { id: "nosotros", label: "Nosotros" },
+  { id: "habitaciones", label: "Habitaciones" },
+  { id: "ofertas", label: "Ofertas" },
+  { id: "servicios", label: "Servicios" },
+  { id: "faq", label: "Preguntas frecuentes" },
+  { id: "contacto", label: "Contacto" },
+];
+
+function Header() {
+  const [abierto, setAbierto] = useState(false);
+
+  return (
+    <header className="header">
+      <a href="#inicio" className="header-logo" onClick={() => setAbierto(false)}>
+        Hotel Paraíso
+      </a>
+
+      <button
+        className={`hamburguesa ${abierto ? "activa" : ""}`}
+        onClick={() => setAbierto(!abierto)}
+        aria-label="Abrir menú"
+        aria-expanded={abierto}
       >
-        <div className="hero-contenido">
-          <p className="hero-sub">Bienvenidos a</p>
-          <h1>Hotel Paraíso</h1>
-          <p className="hero-texto">
-            Elegancia, calma y atención personalizada
-          </p>
-          <a href="#habitaciones" className="btn">
-            Ver habitaciones
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav className={`menu ${abierto ? "abierto" : ""}`}>
+        {links.map((l) => (
+          <a key={l.id} href={`#${l.id}`} onClick={() => setAbierto(false)}>
+            {l.label}
           </a>
-        </div>
-      </div>
+        ))}
+      </nav>
     </header>
   );
 }

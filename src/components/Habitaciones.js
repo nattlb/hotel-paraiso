@@ -4,28 +4,28 @@ const habitaciones = [
     nombre: "Simple",
     descripcion: "Ideal para viajeros solos. Cama individual y escritorio.",
     precio: 50,
-    img: "/imagenes/simple.jpg",
+    img: "/imagenes/simple.jpeg",
   },
   {
     id: 2,
     nombre: "Doble",
     descripcion: "Cama matrimonial, baño privado y vista a la ciudad.",
     precio: 80,
-    img: "/imagenes/doble.jpg",
+    img: "/imagenes/doble.jpeg",
   },
   {
     id: 3,
     nombre: "Suite",
     descripcion: "Amplio living, cama king y balcón privado.",
     precio: 120,
-    img: "/imagenes/suite.jpg",
+    img: "/imagenes/suite.jpeg",
   },
   {
     id: 4,
     nombre: "Premium",
     descripcion: "Habitación de lujo con vista panorámica y jacuzzi.",
     precio: 150,
-    img: "/imagenes/premium.jpg",
+    img: "/imagenes/premium.jpeg",
   },
 ];
 
